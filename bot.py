@@ -5,8 +5,8 @@ import time
 import datetime
 
 # Authenticate to Twitter
-auth = tweepy.OAuthHandler("QyQcJ84xiv2obPRb7Isrhuqrx", "3wZI2fkZFJuJq372t4MN3eirckLv1u0ButuyBrQXTGY5Sy0RGF")
-auth.set_access_token("1519341833347866624-AChZr1S7pGfVTD4Hb7q2vK5n2tbjDe", "w65AIKnRwrie8glS1ezVhV0ICSuyzVfPYuyaCsIJZ1yOd")
+auth = tweepy.OAuthHandler("key", "key_secret")
+auth.set_access_token("token", "token_secret")
 
 # Create API object
 api = tweepy.API(auth)
