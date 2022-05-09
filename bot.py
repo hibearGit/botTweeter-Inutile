@@ -13,19 +13,26 @@ api = tweepy.API(auth)
 
 url = 'https://m.savoir-inutile.com/'
 
-while True : 
+def tweet ():
 
-    response = requests.get(url)
+    while True : 
 
-    if response.ok :
-        h = datetime.datetime.now().strftime('%H,%M,%S')
+        response = requests.get(url)
 
-        if h == "08,00,00" or h == "19,00,00":
+        if response.ok :
+            h = datetime.datetime.now().strftime('%H,%M,%S')
 
-            soup = BeautifulSoup(response.text, 'lxml')
-            info = soup.find('p')
+            if h == "07,00,00" or h == "18,00,00":
 
-            print(info.text)
+                soup = BeautifulSoup(response.text, 'lxml')
+                info = soup.find('p')
 
-            api.update_status("Info inutile du soir : "+ info.text +"#infoinutile")
-            time.sleep(1)
+                print(info.text)
+
+                api.update_status("Info inutile : "+ info.text +"#infoinutile")
+                time.sleep(1)
+        else:
+            print("error + tg ca remarche au prochain tweet")
+            tweet()
+
+tweet()
